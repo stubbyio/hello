@@ -1,0 +1,40 @@
+endpoints:
+  - description: say hello to me from a post
+    request:
+      url: ^/$
+      method: post
+    response:
+      status: 200
+      body: hello <% post %> from stubby
+
+  - description: say hello to me from a query
+    request:
+      url: ^/$
+      query:
+        name: (.+)
+    response:
+      status: 200
+      body: hello <% query.name[1] %> from stubby
+
+  - description: say hello to me from a header
+    request:
+      url: ^/$
+      headers:
+        name: (.+)
+    response:
+      status: 200
+      body: hello <% headers.name[1] %> from stubby
+
+  - description: say hello from the url
+    request:
+      url: ^/(.+)$
+    response:
+      status: 200
+      body: hello <% url[1] %> from stubby
+
+  - description: say hello
+    request:
+      url: ^/$
+    response:
+      status: 200
+      body: hello from stubby
